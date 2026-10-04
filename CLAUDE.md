@@ -34,3 +34,7 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/): `<t
 Default to a single-line message with no body and no credit or trailer lines (no `Co-Authored-By`, no "Generated with" attribution). Only add a multi-line body, after a blank line, when a commit is complicated enough to need an explanation of what changed and why.
 
 Pull requests are squash-merged (the only merge method allowed), so the pull request title becomes the commit on `main` and must follow the same Conventional Commits format. Commits on the branch don't need to be split in any particular way. Keep one logical change per pull request.
+
+## Pull request template
+
+Pull requests follow the template in `.github/pull_request_template.md`, with these sections in order: Summary, Changes (a `-` list), Related issues (`Closes #N`, plus other links as `- [Label](URL)`) and Additional notes. The pull request body becomes the squash commit body on `main`, so keep it concise and delete empty sections and unfilled placeholders such as a bare `Closes #`.

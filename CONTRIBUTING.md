@@ -68,6 +68,17 @@ For example: `docs(setup): add contributing file with guidelines for external co
 
 Pull requests are squash-merged, so each one lands on `main` as a single commit. That commit takes the pull request title, which must follow the format above (for example `feat(auth): add login endpoint`). The commits on your branch can be as granular or as rough as you like, and keep one logical change per pull request.
 
+## Pull request template
+
+Pull requests are pre-filled from [.github/pull_request_template.md](.github/pull_request_template.md). It has four sections:
+
+- **Summary:** what the pull request does and why, in a few sentences
+- **Changes:** the main changes, as a list
+- **Related issues:** `Closes #N` so the issue is closed when the pull request is merged, plus any other links written as `- [Label](URL)`
+- **Additional notes:** context, trade-offs, follow-ups, or anything a reviewer should know
+
+The text of the pull request becomes the body of the squash commit on `main`, so keep it short and remove any section you don't need.
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
