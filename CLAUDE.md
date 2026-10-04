@@ -25,4 +25,10 @@ Issues follow the general template in `.github/ISSUE_TEMPLATE/general.md`, with 
 
 The project follows GitHub Flow: `main` is always stable and is never committed to directly. Each change is made on a short-lived branch created from `main`, merged back through a pull request, and the branch is deleted afterwards.
 
-Branches are named `<type>/<issue-number>-<short-description>`, e.g. `chore/0-project-repo-setup`. `<type>` is the Conventional Commits type, the same one used in commit messages, and maps to the issue label: `enhancement` → `feat`, `bug` → `fix`, `documentation` → `docs`; `test`, `refactor` and `chore` are unchanged.
+Branches are named `<type>/<issue-number>-<short-description>`, e.g. `chore/0-project-repo-setup`. `<type>` is the [Conventional Commits](https://www.conventionalcommits.org/) type, the same one used in commit messages, and maps to the issue label: `enhancement` → `feat`, `bug` → `fix`, `documentation` → `docs`; `test`, `refactor` and `chore` are unchanged.
+
+## Commit messages
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <short description>`, with the same types as branch names and a lowercase description, e.g. `docs(setup): add readme with project title and description`.
+
+Default to a single-line message with no body and no credit or trailer lines (no `Co-Authored-By`, no "Generated with" attribution). Only add a multi-line body, after a blank line, when a commit is complicated enough to need an explanation of what changed and why.

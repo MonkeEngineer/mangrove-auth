@@ -49,6 +49,21 @@ Name branches `<type>/<issue-number>-<short-description>`, for example `chore/0-
 | `refactor` | `refactor` |
 | `chore` | `chore` |
 
+## Commit messages
+
+We use [Conventional Commits](https://www.conventionalcommits.org/):
+
+```text
+<type>(<scope>): <short description>
+```
+
+For example: `docs(setup): add contributing file with guidelines for external contributors`.
+
+- Use the same types as in branch names (`feat`, `fix`, `docs`, `test`, `refactor`, `chore`).
+- Keep the description lowercase and short.
+- Most commits are a single line, and we don't add credit lines such as `Co-Authored-By`.
+- If a change is complicated and needs more explanation, add a body after a blank line to describe what changed and why.
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
