@@ -1,6 +1,8 @@
 ---
 name: General
 about: Plan a task, feature, or change
+labels: ""
+assignees: ""
 ---
 
 ## Summary
