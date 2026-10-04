@@ -38,7 +38,16 @@ We follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/gith
 4. Open a pull request into `main`.
 5. Once it's merged, delete the branch.
 
-Name branches `<type>/<issue-number>-<short-description>`, where the type is one of the labels above (`bug`, `enhancement`, `documentation`, `test`, `refactor` or `chore`), for example `chore/0-project-repo-setup`.
+Name branches `<type>/<issue-number>-<short-description>`, for example `chore/0-project-repo-setup`. The type uses the same words as our commit messages ([Conventional Commits](https://www.conventionalcommits.org/)) and matches the label of the issue:
+
+| Label | Branch type |
+| --- | --- |
+| `enhancement` | `feat` |
+| `bug` | `fix` |
+| `documentation` | `docs` |
+| `test` | `test` |
+| `refactor` | `refactor` |
+| `chore` | `chore` |
 
 ## License
 
