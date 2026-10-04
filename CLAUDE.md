@@ -16,3 +16,7 @@ Issues and pull requests use these labels:
 - `test`: adding or improving tests
 - `refactor`: code changes that neither fix a bug nor add a feature
 - `chore`: maintenance and tooling work
+
+## Issue template
+
+Issues follow the general template in `.github/ISSUE_TEMPLATE/general.md`, with these sections in order: Summary, Acceptance criteria (a `- [ ]` checklist), Additional notes (a `-` list), and References (a `-` list written as `- [Label](URL)`). The template sets no default labels or assignees, so pick the label when creating the issue.
