@@ -33,4 +33,4 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/): `<t
 
 Default to a single-line message with no body and no credit or trailer lines (no `Co-Authored-By`, no "Generated with" attribution). Only add a multi-line body, after a blank line, when a commit is complicated enough to need an explanation of what changed and why.
 
-Aim for one logical change per commit. When working test-first (TDD), commit the tests and the implementation separately: a `test(...)` commit first, then the `feat(...)` or `fix(...)` commit that makes it pass. Small changes may be combined, such as a one-line fix and its test in one `fix(...)` commit. This is a guideline, not a hard rule.
+Pull requests are squash-merged (the only merge method allowed), so the pull request title becomes the commit on `main` and must follow the same Conventional Commits format. Commits on the branch don't need to be split in any particular way. Keep one logical change per pull request.
