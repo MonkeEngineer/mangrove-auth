@@ -20,3 +20,9 @@ Issues and pull requests use these labels:
 ## Issue template
 
 Issues follow the general template in `.github/ISSUE_TEMPLATE/general.md`, with these sections in order: Summary, Acceptance criteria (a `- [ ]` checklist), Additional notes (a `-` list), and References (a `-` list written as `- [Label](URL)`). The template sets no default labels or assignees, so pick the label when creating the issue.
+
+## Branching strategy
+
+The project follows GitHub Flow: `main` is always stable and is never committed to directly. Each change is made on a short-lived branch created from `main`, merged back through a pull request, and the branch is deleted afterwards.
+
+Branches are named `<type>/<issue-number>-<short-description>`, where `<type>` is one of the labels above (`bug`, `enhancement`, `documentation`, `test`, `refactor`, `chore`), e.g. `chore/0-project-repo-setup`.

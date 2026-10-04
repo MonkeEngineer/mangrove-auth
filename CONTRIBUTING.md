@@ -28,6 +28,18 @@ New issues start from the general template in [.github/ISSUE_TEMPLATE/general.md
 
 Pick the label that fits the issue when you create it. The template doesn't assign labels or assignees by default.
 
+## Branching strategy
+
+We follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow):
+
+1. `main` is always in a stable state, so don't commit to it directly.
+2. Create a short-lived branch from `main` for each change.
+3. Commit your work on that branch and push it.
+4. Open a pull request into `main`.
+5. Once it's merged, delete the branch.
+
+Name branches `<type>/<issue-number>-<short-description>`, where the type is one of the labels above (`bug`, `enhancement`, `documentation`, `test`, `refactor` or `chore`), for example `chore/0-project-repo-setup`.
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
