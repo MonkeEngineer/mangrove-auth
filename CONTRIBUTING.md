@@ -38,6 +38,14 @@ We follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/gith
 4. Open a pull request into `main`.
 5. Once it's merged, delete the branch.
 
+GitHub deletes the remote branch automatically when the pull request is merged. Your local branch needs to be cleaned up by hand. Because pull requests are squash-merged, `git branch -d` refuses to delete it, so after checking that the pull request was merged use `-D`:
+
+```bash
+git switch main
+git pull --prune
+git branch -D <branch>
+```
+
 Name branches `<type>/<issue-number>-<short-description>`, for example `chore/0-project-repo-setup`. The type uses the same words as our commit messages ([Conventional Commits](https://www.conventionalcommits.org/)) and matches the label of the issue:
 
 | Label | Branch type |

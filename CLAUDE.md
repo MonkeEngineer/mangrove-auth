@@ -23,7 +23,7 @@ Issues follow the general template in `.github/ISSUE_TEMPLATE/general.md`, with 
 
 ## Branching strategy
 
-The project follows GitHub Flow: `main` is always stable and is never committed to directly. Each change is made on a short-lived branch created from `main`, merged back through a pull request, and the branch is deleted afterwards.
+The project follows GitHub Flow: `main` is always stable and is never committed to directly. Each change is made on a short-lived branch created from `main`, merged back through a pull request, and the branch is deleted afterwards. The remote branch is deleted automatically by GitHub on merge. The local branch is not: after confirming the pull request was merged, run `git switch main`, `git pull --prune`, then `git branch -D <branch>` (`-d` refuses because squash merges leave the branch looking unmerged).
 
 Branches are named `<type>/<issue-number>-<short-description>`, e.g. `chore/0-project-repo-setup`. `<type>` is the [Conventional Commits](https://www.conventionalcommits.org/) type, the same one used in commit messages, and maps to the issue label: `enhancement` → `feat`, `bug` → `fix`, `documentation` → `docs`; `test`, `refactor` and `chore` are unchanged.
 
