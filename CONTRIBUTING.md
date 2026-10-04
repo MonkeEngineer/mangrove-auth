@@ -64,6 +64,15 @@ For example: `docs(setup): add contributing file with guidelines for external co
 - Most commits are a single line, and we don't add credit lines such as `Co-Authored-By`.
 - If a change is complicated and needs more explanation, add a body after a blank line to describe what changed and why.
 
+### Commit granularity
+
+Try to make each commit one logical change.
+
+- When working test-first (TDD), commit the tests and the implementation separately: a `test(...)` commit first, then the `feat(...)` or `fix(...)` commit that makes it pass.
+- Small changes can be combined, for example a one-line fix and its test in a single `fix(...)` commit.
+
+This is a guideline, not a hard rule, so use your judgment when a change doesn't split cleanly.
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).

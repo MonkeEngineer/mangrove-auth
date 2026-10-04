@@ -32,3 +32,5 @@ Branches are named `<type>/<issue-number>-<short-description>`, e.g. `chore/0-pr
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <short description>`, with the same types as branch names and a lowercase description, e.g. `docs(setup): add readme with project title and description`.
 
 Default to a single-line message with no body and no credit or trailer lines (no `Co-Authored-By`, no "Generated with" attribution). Only add a multi-line body, after a blank line, when a commit is complicated enough to need an explanation of what changed and why.
+
+Aim for one logical change per commit. When working test-first (TDD), commit the tests and the implementation separately: a `test(...)` commit first, then the `feat(...)` or `fix(...)` commit that makes it pass. Small changes may be combined, such as a one-line fix and its test in one `fix(...)` commit. This is a guideline, not a hard rule.
