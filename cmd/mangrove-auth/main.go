@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
@@ -32,9 +33,18 @@ func main() {
 	// Log the port the server is listening on
 	slog.Info("Starting server", "port", port)
 
+	// Create the HTTP server instance
+	server := &http.Server{
+		Addr:         "0.0.0.0:" + port,
+		Handler:      mux,
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  120 * time.Second,
+	}
+
 	// Start the HTTP server
-	err := http.ListenAndServe(":"+port, mux)
+	err := server.ListenAndServe()
 	if err != nil {
-		panic(err)
+		slog.Error("Server failed to start", "error", err)
 	}
 }
