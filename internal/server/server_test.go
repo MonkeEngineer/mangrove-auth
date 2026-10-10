@@ -25,6 +25,24 @@ func TestSmokeHealthz(t *testing.T) {
 	}
 }
 
+func TestSmokeHealthz_ShuttingDown(t *testing.T) {
+	var isShuttingDown atomic.Bool
+	srv := httptest.NewServer(server.NewRouter(&isShuttingDown))
+	defer srv.Close()
+
+	isShuttingDown.Store(true)
+
+	resp, err := http.Get(srv.URL + "/healthz")
+	if err != nil {
+		t.Fatalf("request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		t.Errorf("expected 200, got %d", resp.StatusCode)
+	}
+}
+
 func TestSmokeReadyz(t *testing.T) {
 	var isShuttingDown atomic.Bool
 	srv := httptest.NewServer(server.NewRouter(&isShuttingDown))
