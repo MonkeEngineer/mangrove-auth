@@ -9,6 +9,8 @@ import (
 	"sync/atomic"
 	"syscall"
 	"time"
+
+	"github.com/ecosystem-admin/mangrove-auth/internal/handlers"
 )
 
 func main() {
@@ -20,11 +22,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	// Set up the HTTP handlers for health and readiness checks
-	mux.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"ok"}`))
-	})
+	mux.HandleFunc("/healthz", handlers.HealthHandler)
 
 	mux.HandleFunc("/readyz", func(w http.ResponseWriter, r *http.Request) {
 		// Check if the server is shutting down
