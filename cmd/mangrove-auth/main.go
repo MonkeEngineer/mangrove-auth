@@ -1,9 +1,12 @@
 package main
 
 import (
+	"context"
 	"log/slog"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
@@ -42,9 +45,35 @@ func main() {
 		IdleTimeout:  120 * time.Second,
 	}
 
+	// Listen for shutdown signals to gracefully shut down the server
+	go func() {
+		// Create a channel to listen for OS signals
+		quit := make(chan os.Signal, 1)
+		signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
+
+		// Wait for a signal to shut down
+		<-quit
+
+		// Log that the server is shutting down
+		slog.Info("Shutting down server")
+
+		// Create a context with a timeout for the shutdown process
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		// Attempt to shut down the server
+		err := server.Shutdown(ctx)
+		if err != nil {
+			slog.Error("Server shutdown failed", "error", err)
+		}
+	}()
+
 	// Start the HTTP server
 	err := server.ListenAndServe()
-	if err != nil {
+	if err != nil && err != http.ErrServerClosed {
 		slog.Error("Server failed to start", "error", err)
 	}
+
+	// Log that the server has stopped
+	slog.Info("Server stopped")
 }
