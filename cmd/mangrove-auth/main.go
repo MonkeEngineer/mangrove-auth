@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log/slog"
 	"net/http"
 	"os"
 )
@@ -24,6 +25,9 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
+
+	// Log the port the server is listening on
+	slog.Info("Starting server", "port", port)
 
 	// Start the HTTP server
 	err := http.ListenAndServe(":"+port, nil)
