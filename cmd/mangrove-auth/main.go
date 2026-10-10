@@ -18,26 +18,15 @@ func main() {
 	var isShuttingDown atomic.Bool
 	isShuttingDown.Store(false)
 
-	// Create a new router with the shutdown state
-	mux := server.NewRouter(&isShuttingDown)
-
 	// Get the port from the environment variable, default to 8080 if not set
 	port := os.Getenv("MANGROVE_PORT")
 	if port == "" {
 		port = "8080"
 	}
 
-	// Log the port the server is listening on
+	// Start the server and log the port it's running on
 	slog.Info("Starting server", "port", port)
-
-	// Create the HTTP server instance
-	server := &http.Server{
-		Addr:         "0.0.0.0:" + port,
-		Handler:      mux,
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-	}
+	server := server.NewServer(&isShuttingDown, port)
 
 	// Listen for shutdown signals to gracefully shut down the server
 	go func() {
