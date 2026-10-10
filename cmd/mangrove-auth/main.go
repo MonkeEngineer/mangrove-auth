@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ecosystem-admin/mangrove-auth/internal/handlers"
+	"github.com/ecosystem-admin/mangrove-auth/internal/server"
 )
 
 func main() {
@@ -18,12 +18,8 @@ func main() {
 	var isShuttingDown atomic.Bool
 	isShuttingDown.Store(false)
 
-	// Create a new HTTP server mux
-	mux := http.NewServeMux()
-
-	// Set up the HTTP handlers for health and readiness checks
-	mux.HandleFunc("/healthz", handlers.HealthHandler)
-	mux.HandleFunc("/readyz", handlers.ReadyHandler(&isShuttingDown))
+	// Create a new router with the shutdown state
+	mux := server.NewRouter(&isShuttingDown)
 
 	// Get the port from the environment variable, default to 8080 if not set
 	port := os.Getenv("MANGROVE_PORT")
