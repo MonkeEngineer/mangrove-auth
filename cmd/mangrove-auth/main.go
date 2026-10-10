@@ -23,21 +23,7 @@ func main() {
 
 	// Set up the HTTP handlers for health and readiness checks
 	mux.HandleFunc("/healthz", handlers.HealthHandler)
-
-	mux.HandleFunc("/readyz", func(w http.ResponseWriter, r *http.Request) {
-		// Check if the server is shutting down
-		if isShuttingDown.Load() {
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusServiceUnavailable)
-			w.Write([]byte(`{"status":"unavailable"}`))
-			return
-		}
-
-		// If the server is not shutting down, respond with a ready status
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"ready"}`))
-	})
+	mux.HandleFunc("/readyz", handlers.ReadyHandler(&isShuttingDown))
 
 	// Get the port from the environment variable, default to 8080 if not set
 	port := os.Getenv("MANGROVE_PORT")
